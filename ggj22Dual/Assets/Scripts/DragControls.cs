@@ -38,15 +38,15 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 Debug.Log($"Percentage Difference: {percentages.x}, {percentages.y}");
                 // do fancy dragging math to angle here
 
-                float asin = Mathf.Asin(percentages.x) * Mathf.Rad2Deg;
-                float acos = Mathf.Acos(-percentages.y) * Mathf.Rad2Deg + 90F;
+                float asin = Mathf.Asin(-percentages.x) * Mathf.Rad2Deg;
+                float acos = Mathf.Acos(-percentages.y) * Mathf.Rad2Deg - 90F;
                 board.transform.rotation = Quaternion.Euler(new Vector3(acos, 0, asin));
             }
         }
         else
         {
             // slowly reset to original
-
+            var thing = StartCoroutine(BoardReset());
         }
     }
 
