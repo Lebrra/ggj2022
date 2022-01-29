@@ -33,9 +33,9 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 // position changed, update direction
                 currDragPos = Input.mousePosition;
 
-                Debug.Log($"Current Difference: {currDragPos.x - startDragPos.x}, {currDragPos.y - startDragPos.y}");
+                //Debug.Log($"Current Difference: {currDragPos.x - startDragPos.x}, {currDragPos.y - startDragPos.y}");
                 Vector2 percentages = new Vector2(Mathf.Clamp((currDragPos.x - startDragPos.x) / screenSize.x, -0.2F, 0.2F), Mathf.Clamp((currDragPos.y - startDragPos.y) / screenSize.y, -0.2F, 0.2F));
-                Debug.Log($"Percentage Difference: {percentages.x}, {percentages.y}");
+                //Debug.Log($"Percentage Difference: {percentages.x}, {percentages.y}");
                 // do fancy dragging math to angle here
 
                 float asin = Mathf.Asin(-percentages.x) * Mathf.Rad2Deg;
