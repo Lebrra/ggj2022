@@ -11,8 +11,8 @@ public class SceneLoader : MonoBehaviour
 
     void Awake()
     {
-        if (instance) Destroy(this);
-        else instance = this;
+        if (instance) Destroy(instance);
+        instance = this;
 
         if (!fogAnim) Debug.LogWarning("Fog Animator not set", gameObject);
     }

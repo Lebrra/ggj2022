@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void Credits()
     {
+        SceneLoader.instance?.LoadScene(0);
         Debug.Log("Play credits here");
     }
 }
