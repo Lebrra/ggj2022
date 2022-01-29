@@ -25,8 +25,7 @@ public class GameManager : MonoBehaviour
         {
             // yay win
             Debug.Log("YOU WIN");
-            SceneLoader.instance?.ReloadScene();
-            //SceneLoader.instance?.LoadScene(nextLevelIndex);
+            SceneLoader.instance?.LoadScene(nextLevelIndex);
         }
     }
 
