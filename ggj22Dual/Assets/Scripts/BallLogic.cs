@@ -6,15 +6,30 @@ public class BallLogic : MonoBehaviour
 {
     // if ball falls too far, check for death/win
     bool success = false;
+    int titleOption = -1;
 
     float yCheckVal = -10F;
 
-    // Update is called once per frame
     void Update()
     {
         if (transform.position.y < yCheckVal)
         {
             gameObject.SetActive(false);
+            switch (titleOption)
+            {
+                case 0:
+                    GameManager.instance?.StartGame();
+                    return;
+                case 1:
+                    GameManager.instance?.Credits();
+                    return;
+                case 2:
+                    GameManager.instance?.QuitGame();
+                    return;
+                default:
+                    break;
+            }
+
             if (success)
             {
                 GameManager.instance?.AddToSuccess();
@@ -31,5 +46,10 @@ public class BallLogic : MonoBehaviour
     public void SetSuccess()
     {
         success = true;
+    }
+
+    public void SetChoice(int choice)
+    {
+        titleOption = choice;
     }
 }

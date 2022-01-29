@@ -5621,23 +5621,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &448448794 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8397628343899039002, guid: 4e7000fcc1b4b714abb7c98de05327b2, type: 3}
-  m_PrefabInstance: {fileID: 1025104087184785105}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &448448796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448448794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d2584d79a7a4143b798b16a7f93532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &466547772
 GameObject:
   m_ObjectHideFlags: 0
@@ -18034,7 +18017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7520380101814204539, guid: 1548a98b84e1a1b4482887a7b820a38c, type: 3}
       propertyPath: nextLevelIndex
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1548a98b84e1a1b4482887a7b820a38c, type: 3}

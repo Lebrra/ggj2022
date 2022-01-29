@@ -37,4 +37,19 @@ public class GameManager : MonoBehaviour
             SceneLoader.instance?.ReloadScene();
         }
     }
+
+    public void StartGame()
+    {
+        SceneLoader.instance?.LoadScene(nextLevelIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void Credits()
+    {
+        Debug.Log("Play credits here");
+    }
 }
