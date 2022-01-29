@@ -27,4 +27,9 @@ public class BallLogic : MonoBehaviour
             }
         }
     }
+
+    public void SetSuccess()
+    {
+        success = true;
+    }
 }
