@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -8,12 +9,12 @@ public class SceneLoader : MonoBehaviour
 
     void Awake()
     {
-        if (instance) Destroy(instance);
-        instance = this;
+        if (instance) Destroy(this);
+        else instance = this;
     }
 
-    void Update()
+    public void LoadScene(int sceneIndex)
     {
-        
+        SceneManager.LoadScene(sceneIndex);
     }
 }
