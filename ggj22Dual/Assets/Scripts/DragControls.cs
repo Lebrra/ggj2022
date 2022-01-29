@@ -16,6 +16,8 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public GameObject board;
 
+    UnityEngine.UI.Image myInteration;
+
     private void Start()
     {
         screenSize = new Vector2(Screen.width, Screen.height);
@@ -82,8 +84,17 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             float acos = Mathf.Acos(-ratios.y * (float)iteration) * Mathf.Rad2Deg - 90F;
             board.transform.rotation = Quaternion.Euler(new Vector3(acos, 0, asin));
 
-            yield return new WaitForSecondsRealtime(0.05F);
+            yield return new WaitForSecondsRealtime(0.02F);
             currentResettor = StartCoroutine(BoardReset(ratios, iteration));
         }
+    }
+
+    public void Controls(bool enabled)
+    {
+        if (!myInteration)
+        {
+            myInteration = GetComponent<UnityEngine.UI.Image>();
+        }
+        myInteration.enabled = enabled;
     }
 }
