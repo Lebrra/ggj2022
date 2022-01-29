@@ -7,7 +7,7 @@ public class BallLogic : MonoBehaviour
     // if ball falls too far, check for death/win
     bool success = false;
 
-    float yCheckVal = -100F;
+    float yCheckVal = -10F;
 
     // Update is called once per frame
     void Update()
@@ -17,12 +17,13 @@ public class BallLogic : MonoBehaviour
             gameObject.SetActive(false);
             if (success)
             {
-                // add to gamemanager
+                GameManager.instance?.AddToSuccess();
             }
             else
             {
                 // reset the level
-                SceneLoader.instance.ReloadScene();
+                Debug.Log("YOU LOSE");
+                GameManager.instance?.TriggerLose();
             }
         }
     }
