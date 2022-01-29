@@ -16,6 +16,8 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public GameObject board;
 
+    UnityEngine.UI.Image myInteration;
+
     private void Start()
     {
         screenSize = new Vector2(Screen.width, Screen.height);
@@ -31,9 +33,9 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 // position changed, update direction
                 currDragPos = Input.mousePosition;
 
-                Debug.Log($"Current Difference: {currDragPos.x - startDragPos.x}, {currDragPos.y - startDragPos.y}");
-                Vector2 percentages = new Vector2((currDragPos.x - startDragPos.x) / screenSize.x, (currDragPos.y - startDragPos.y) / screenSize.y);
-                Debug.Log($"Percentage Difference: {percentages.x}, {percentages.y}");
+                //Debug.Log($"Current Difference: {currDragPos.x - startDragPos.x}, {currDragPos.y - startDragPos.y}");
+                Vector2 percentages = new Vector2(Mathf.Clamp((currDragPos.x - startDragPos.x) / screenSize.x, -0.2F, 0.2F), Mathf.Clamp((currDragPos.y - startDragPos.y) / screenSize.y, -0.2F, 0.2F));
+                //Debug.Log($"Percentage Difference: {percentages.x}, {percentages.y}");
                 // do fancy dragging math to angle here
 
                 float asin = Mathf.Asin(-percentages.x) * Mathf.Rad2Deg;
@@ -63,7 +65,7 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         isDragging = false;
         //reset board position
-        Vector2 percentages = new Vector2((currDragPos.x - startDragPos.x) / screenSize.x, (currDragPos.y - startDragPos.y) / screenSize.y);
+        Vector2 percentages = new Vector2(Mathf.Clamp((currDragPos.x - startDragPos.x) / screenSize.x, -0.2F, 0.2F), Mathf.Clamp((currDragPos.y - startDragPos.y) / screenSize.y, -0.2F, 0.2F));
         currentResettor = StartCoroutine(BoardReset(percentages / (float)resetIterator, resetIterator));
     }
 
@@ -82,8 +84,17 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             float acos = Mathf.Acos(-ratios.y * (float)iteration) * Mathf.Rad2Deg - 90F;
             board.transform.rotation = Quaternion.Euler(new Vector3(acos, 0, asin));
 
-            yield return new WaitForSecondsRealtime(0.05F);
+            yield return new WaitForSecondsRealtime(0.02F);
             currentResettor = StartCoroutine(BoardReset(ratios, iteration));
         }
+    }
+
+    public void Controls(bool enabled)
+    {
+        if (!myInteration)
+        {
+            myInteration = GetComponent<UnityEngine.UI.Image>();
+        }
+        myInteration.enabled = enabled;
     }
 }
