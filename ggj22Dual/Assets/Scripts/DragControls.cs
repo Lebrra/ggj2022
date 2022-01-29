@@ -10,17 +10,15 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     Vector2 currDragPos;
 
     Vector2 screenSize;
-    float dragScaler = 1F;
 
-    float resetIterator = 0.05F;
+    int resetIterator = 15; //how many iterations should it take to reset pos?
+    Coroutine currentResettor = null;
 
     public GameObject board;
 
     private void Start()
     {
         screenSize = new Vector2(Screen.width, Screen.height);
-        if (screenSize.y != 0) dragScaler = screenSize.x / screenSize.y;
-        else dragScaler = 1;
     }
 
     private void Update()
@@ -34,7 +32,7 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 currDragPos = Input.mousePosition;
 
                 Debug.Log($"Current Difference: {currDragPos.x - startDragPos.x}, {currDragPos.y - startDragPos.y}");
-                Vector2 percentages = new Vector2((currDragPos.x - startDragPos.x) / screenSize.x, (currDragPos.y - startDragPos.y) / screenSize.y /* dragScaler*/);
+                Vector2 percentages = new Vector2((currDragPos.x - startDragPos.x) / screenSize.x, (currDragPos.y - startDragPos.y) / screenSize.y);
                 Debug.Log($"Percentage Difference: {percentages.x}, {percentages.y}");
                 // do fancy dragging math to angle here
 
@@ -43,15 +41,15 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 board.transform.rotation = Quaternion.Euler(new Vector3(acos, 0, asin));
             }
         }
-        else
-        {
-            // slowly reset to original
-            var thing = StartCoroutine(BoardReset());
-        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (currentResettor != null)
+        {
+            StopCoroutine(currentResettor);
+            currentResettor = null;
+        }
         startDragPos = Input.mousePosition;
         isDragging = true;
     }
@@ -65,10 +63,27 @@ public class DragControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         isDragging = false;
         //reset board position
+        Vector2 percentages = new Vector2((currDragPos.x - startDragPos.x) / screenSize.x, (currDragPos.y - startDragPos.y) / screenSize.y);
+        currentResettor = StartCoroutine(BoardReset(percentages / (float)resetIterator, resetIterator));
     }
 
-    IEnumerator BoardReset()
+    IEnumerator BoardReset(Vector2 ratios, int iteration)
     {
-        yield return null;
+        iteration--;
+        if (iteration <= 0)
+        {
+            // reset and end
+            board.transform.rotation = Quaternion.Euler(Vector3.zero);
+            yield return null;
+        }
+        else
+        {
+            float asin = Mathf.Asin(-ratios.x * (float)iteration) * Mathf.Rad2Deg;
+            float acos = Mathf.Acos(-ratios.y * (float)iteration) * Mathf.Rad2Deg - 90F;
+            board.transform.rotation = Quaternion.Euler(new Vector3(acos, 0, asin));
+
+            yield return new WaitForSecondsRealtime(0.05F);
+            currentResettor = StartCoroutine(BoardReset(ratios, iteration));
+        }
     }
 }
