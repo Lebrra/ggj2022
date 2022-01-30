@@ -9,8 +9,26 @@ public class BallLogic : MonoBehaviour
     int titleOption = -1;
 
     public bool hasTouchedGround = false;
+    public bool fixForLevel2 = false;
 
     float yCheckVal = -10F;
+
+    private void Awake()
+    {
+        if (fixForLevel2)
+        {
+            hasTouchedGround = false;
+            GetComponent<Rigidbody>().useGravity = false;
+            StartCoroutine(DelayGravity());
+        }
+    }
+
+    IEnumerator DelayGravity()
+    {
+        yield return new WaitForSeconds(2.2F);
+        transform.SetParent(null);
+        GetComponent<Rigidbody>().useGravity = true;
+    }
 
     void Update()
     {
