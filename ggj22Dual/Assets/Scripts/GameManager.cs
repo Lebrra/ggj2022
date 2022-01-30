@@ -65,8 +65,8 @@ public class GameManager : MonoBehaviour
 
     public void Credits()
     {
+        StartCoroutine(AudioManager.inst.FadeSongOut(2.2f, 0, 0));
         SceneLoader.instance?.LoadScene(0);
-        StartCoroutine(AudioManager.inst.FadeSongOut(2.2f, .5f, 0));
         Debug.Log("Play credits here");
     }
 
