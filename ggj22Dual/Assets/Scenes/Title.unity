@@ -10713,6 +10713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   option: 2
+  particles: {fileID: 8173017800971427993, guid: 9fbd452a8063fce4e8eed11049d0c880, type: 3}
 --- !u!1001 &1105222894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11770,6 +11771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   option: 1
+  particles: {fileID: 8173017800971427993, guid: 9fbd452a8063fce4e8eed11049d0c880, type: 3}
 --- !u!1 &1259679326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1025104086711076676, guid: 4e7000fcc1b4b714abb7c98de05327b2, type: 3}
@@ -14435,6 +14437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   option: 0
+  particles: {fileID: 8173017800971427993, guid: 9fbd452a8063fce4e8eed11049d0c880, type: 3}
 --- !u!1 &1654028315
 GameObject:
   m_ObjectHideFlags: 0
