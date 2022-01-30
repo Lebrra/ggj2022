@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void ToTitle()
     {
         SceneLoader.instance?.LoadScene(nextLevelIndex);
+        StartCoroutine(AudioManager.inst.FadeSongOut(2.2f, .5f, 1));
     }
 
     public void QuitGame()

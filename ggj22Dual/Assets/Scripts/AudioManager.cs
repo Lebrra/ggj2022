@@ -7,11 +7,11 @@ public class AudioManager : MonoBehaviour
     public static AudioManager inst;
 
     public List<AudioClip> songList;
-    public List<AudioClip> staticList;
+
     public AudioSource songSource;
     public AudioSource sfxSource;
     private float startVol;
-    public int currSong = 1;
+    public int currSong = 0;
 
     private void Awake()
     {
@@ -20,17 +20,17 @@ public class AudioManager : MonoBehaviour
             Destroy(this);
         }
         else
+        {
             inst = this;
-
-        DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     void Start()
     {
         inst = this;
         startVol = songSource.volume;
-        songSource.clip = songList[1];
-        currSong = 1;
+        songSource.clip = songList[currSong];
         songSource.Play();
     }
 
