@@ -84,4 +84,11 @@ public class GameManager : MonoBehaviour
         Pause();
         SceneLoader.instance?.ReloadScene();
     }
+
+    public void ToMain()
+    {
+        Time.timeScale = 1;
+        Pause();
+        SceneLoader.instance?.LoadScene(2);
+    }
 }
