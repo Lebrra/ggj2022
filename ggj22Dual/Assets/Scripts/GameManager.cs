@@ -14,9 +14,14 @@ public class GameManager : MonoBehaviour
     public int nextLevelIndex;
     LevelStats myLevelStats;
 
-    [Header("Pause Menu")]
+    [Header("Scene Elements")]
     public GameObject pauseMenu;
     bool paused = false;
+
+    public TMPro.TextMeshPro bestTimeText;
+    [SerializeField]
+    float gameTime = 0F;
+    bool timerRunning = false;
 
     void Awake()
     {
@@ -29,13 +34,22 @@ public class GameManager : MonoBehaviour
         if (SaveDataManager.instance)
         {
             myLevelStats = SaveDataManager.instance.GetLevelData(myLevelIndex);
+            if (myLevelStats.time > 0 && bestTimeText) bestTimeText.text = FormatTime(myLevelStats.time);
+            else bestTimeText?.gameObject.SetActive(false);
         }
-        else Debug.LogWarning("Save data not loaded");
+        else
+        {
+            Debug.LogWarning("Save data disabled");
+            bestTimeText?.gameObject.SetActive(false);
+            myLevelStats = new LevelStats();
+            myLevelStats.time = 0;
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) Pause();
+        if (timerRunning) gameTime += Time.deltaTime;
     }
 
     public void AddToSuccess()
@@ -45,6 +59,8 @@ public class GameManager : MonoBehaviour
         {
             // yay win
             Debug.Log("YOU WIN");
+
+            SetTime();
             SceneLoader.instance?.LoadScene(nextLevelIndex);
         }
     }
@@ -60,11 +76,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        SetTime();
         SceneLoader.instance?.LoadScene(nextLevelIndex);
     }
 
     public void ToTitle()
     {
+        SetTime();
+
         SceneLoader.instance?.LoadScene(nextLevelIndex);
         StartCoroutine(AudioManager.inst.FadeSongOut(2.2f, .5f, 1));
     }
@@ -87,7 +106,11 @@ public class GameManager : MonoBehaviour
         pauseMenu?.SetActive(paused);
 
         if (paused) Time.timeScale = 0;
-        else Time.timeScale = 1;
+        else
+        {
+            Time.timeScale = 1;
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     public void ResetLevel()
@@ -102,5 +125,34 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Pause();
         SceneLoader.instance?.LoadScene(2);
+    }
+
+    public void SetTimerRunning(bool enable)
+    {
+        timerRunning = enable;
+    }
+
+    public void SetTime()
+    {
+        SetTimerRunning(false);
+        if (myLevelStats.time < 0 || myLevelStats.time > gameTime)
+        {
+            Debug.Log("NEW HIGH SCORE: " + gameTime);
+            bestTimeText?.gameObject.SetActive(true);
+            if (bestTimeText) bestTimeText.text = FormatTime(gameTime);
+
+            myLevelStats.time = gameTime;
+            SaveDataManager.instance?.SaveLevelData(myLevelIndex, myLevelStats);
+        }
+    }
+
+    string FormatTime(float time)   // in seconds
+    {
+        int minutes = Mathf.FloorToInt(time / 60);
+        string minutesStr = "";
+        if (minutes > 0) minutesStr = minutes.ToString() + ":";
+        float remaining = time - (minutes * 60F);
+
+        return minutesStr + (Mathf.Round(remaining * 100F) / 100F).ToString();
     }
 }

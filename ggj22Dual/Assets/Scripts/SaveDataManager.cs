@@ -33,4 +33,14 @@ public class SaveDataManager : MonoBehaviour
             return gameData.allLevelData[sceneIndex];
         }
     }
+
+    public void SaveLevelData(int sceneIndex, LevelStats data)
+    {
+        // if time not set or a better time, save 
+        if(gameData.allLevelData[sceneIndex].time < 0 || gameData.allLevelData[sceneIndex].time > data.time)
+        {
+            gameData.allLevelData[sceneIndex].time = data.time;
+        }
+        JSONEditor.SaveDataToJSON(gameData);
+    }
 }

@@ -63,6 +63,7 @@ public class BallLogic : MonoBehaviour
         if (!hasTouchedGround)
         {
             AudioManager.inst.PlayBallSound(1);
+            GameManager.instance?.SetTimerRunning(true);
             hasTouchedGround = true;
         }
     }

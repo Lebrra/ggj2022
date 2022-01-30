@@ -51,5 +51,4 @@ public class SaveData
 public class LevelStats
 {
     public float time = -1F;
-    public int deathCounter = 0;
 }
