@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager inst;
 
     public List<AudioClip> songList;
+    public List<AudioClip> sfxList;
 
     public AudioSource songSource;
     public AudioSource sfxSource;
@@ -63,5 +64,12 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         yield break;
+    }
+
+    public void PlaySuccess(int sfxNumber)
+    {
+        sfxSource.clip = sfxList[sfxNumber];
+        if (!sfxSource.isPlaying)
+            sfxSource.Play();
     }
 }
