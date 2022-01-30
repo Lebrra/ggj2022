@@ -13575,6 +13575,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4390875836062846359, guid: 702071e2dccdbd04e918789bdf31ee16, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390875836062846359, guid: 702071e2dccdbd04e918789bdf31ee16, type: 3}
       propertyPath: hasTouchedGround
       value: 1
       objectReference: {fileID: 0}
