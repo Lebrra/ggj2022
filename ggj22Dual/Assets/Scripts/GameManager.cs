@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         if (!lost)
         {
             lost = true;
+            AddToDeathCounter();
             SceneLoader.instance?.ReloadScene();
         }
     }
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         Pause();
+        AddToDeathCounter();
         SceneLoader.instance?.ReloadScene();
     }
 
@@ -145,6 +147,12 @@ public class GameManager : MonoBehaviour
             myLevelStats.time = gameTime;
             SaveDataManager.instance?.SaveLevelData(myLevelIndex, myLevelStats);
         }
+    }
+
+    public void AddToDeathCounter()
+    {
+        myLevelStats.deathCounter++;
+        SaveDataManager.instance?.SaveLevelData(myLevelIndex, myLevelStats);
     }
 
     string FormatTime(float time)   // in seconds

@@ -37,9 +37,14 @@ public class SaveDataManager : MonoBehaviour
     public void SaveLevelData(int sceneIndex, LevelStats data)
     {
         // if time not set or a better time, save 
-        if(gameData.allLevelData[sceneIndex].time < 0 || gameData.allLevelData[sceneIndex].time > data.time)
+        if (gameData.allLevelData[sceneIndex].time < 0 || gameData.allLevelData[sceneIndex].time > data.time)
         {
             gameData.allLevelData[sceneIndex].time = data.time;
+        }
+        // if out of date death counter, update it
+        if (gameData.allLevelData[sceneIndex].deathCounter < data.deathCounter)
+        {
+            gameData.allLevelData[sceneIndex].deathCounter = data.deathCounter;
         }
         JSONEditor.SaveDataToJSON(gameData);
     }
