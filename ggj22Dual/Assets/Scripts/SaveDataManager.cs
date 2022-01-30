@@ -8,6 +8,10 @@ public class SaveDataManager : MonoBehaviour
 
     public SaveData gameData;
 
+    [Header("Cursors")]
+    public Texture2D cursorDefault;
+    public Texture2D cursorClicked;
+
     private void Awake()
     {
         if (instance) Destroy(this);
@@ -47,5 +51,12 @@ public class SaveDataManager : MonoBehaviour
             gameData.allLevelData[sceneIndex].deathCounter = data.deathCounter;
         }
         JSONEditor.SaveDataToJSON(gameData);
+    }
+
+    private void Update()
+    {
+        // cursor change
+        if (Input.GetMouseButtonDown(0)) Cursor.SetCursor(cursorClicked, Vector2.zero, CursorMode.Auto);
+        if (Input.GetMouseButtonUp(0)) Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
     }
 }
