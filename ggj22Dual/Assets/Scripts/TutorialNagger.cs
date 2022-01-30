@@ -7,6 +7,7 @@ public class TutorialNagger : MonoBehaviour
 {
     public Animator imgAnim;
     RectTransform imgTransform;
+    Vector3 offset = new Vector3(0F, 0F);
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class TutorialNagger : MonoBehaviour
 
         if (!Input.GetMouseButton(0))
         {
-            imgTransform.position = Input.mousePosition;
+            imgTransform.position = Input.mousePosition + offset;
         }
     }
 
