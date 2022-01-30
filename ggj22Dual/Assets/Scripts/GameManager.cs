@@ -52,6 +52,11 @@ public class GameManager : MonoBehaviour
         SceneLoader.instance?.LoadScene(nextLevelIndex);
     }
 
+    public void ToTitle()
+    {
+        SceneLoader.instance?.LoadScene(nextLevelIndex);
+    }
+
     public void QuitGame()
     {
         Application.Quit();

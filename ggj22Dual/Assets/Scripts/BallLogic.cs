@@ -26,6 +26,9 @@ public class BallLogic : MonoBehaviour
                 case 2:
                     GameManager.instance?.QuitGame();
                     return;
+                case 3:
+                    GameManager.instance?.ToTitle();
+                    return;
                 default:
                     break;
             }
