@@ -13,6 +13,11 @@ public class Button : MonoBehaviour
         {
             buttonAnim.SetTrigger("buttPress");
             gateAnim.SetTrigger("GateOpen");
+
+            foreach(var balls in FindObjectsOfType<BallLogic>())
+            {
+                balls.transform.SetParent(null);
+            }
         }
     }
 }
