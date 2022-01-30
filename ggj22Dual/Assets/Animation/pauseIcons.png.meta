@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 82379668534788069
     second: pauseIcons_3
+  - first:
+      213: -4145368311030811900
+    second: pauseIcons_4
+  - first:
+      213: 7206194388707490371
+    second: pauseIcons_5
+  - first:
+      213: 8029937293228157656
+    second: pauseIcons_6
+  - first:
+      213: 7500002623805796796
+    second: pauseIcons_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -230,6 +242,90 @@ TextureImporter:
       bones: []
       spriteID: 5effabf3fdba42100800000000000000
       internalID: 82379668534788069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pauseIcons_4
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 722
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403f8d5fb71b876c0800000000000000
+      internalID: -4145368311030811900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pauseIcons_5
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 605
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ab251dd9b810460800000000000000
+      internalID: 7206194388707490371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pauseIcons_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 431
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8daa68b7c61107f60800000000000000
+      internalID: 8029937293228157656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pauseIcons_7
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 305
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb1317e46ac551860800000000000000
+      internalID: 7500002623805796796
       vertices: []
       indices: 
       edges: []
