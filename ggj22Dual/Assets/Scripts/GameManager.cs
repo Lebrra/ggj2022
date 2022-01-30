@@ -12,10 +12,19 @@ public class GameManager : MonoBehaviour
 
     public int nextLevelIndex;
 
+    [Header("Pause Menu")]
+    public GameObject pauseMenu;
+    bool paused = false;
+
     void Awake()
     {
         if (instance) Destroy(instance);
         instance = this;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) Pause();
     }
 
     public void AddToSuccess()
@@ -52,5 +61,21 @@ public class GameManager : MonoBehaviour
     {
         SceneLoader.instance?.LoadScene(0);
         Debug.Log("Play credits here");
+    }
+
+    public void Pause()
+    {
+        paused = !paused;
+        pauseMenu?.SetActive(paused);
+
+        if (paused) Time.timeScale = 0;
+        else Time.timeScale = 1;
+    }
+
+    public void ResetLevel()
+    {
+        Time.timeScale = 1;
+        Pause();
+        SceneLoader.instance?.ReloadScene();
     }
 }
