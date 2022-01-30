@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     bool firstSuccess = false;
     bool lost = false;
 
+    public int myLevelIndex;
     public int nextLevelIndex;
+    LevelStats myLevelStats;
 
     [Header("Pause Menu")]
     public GameObject pauseMenu;
@@ -20,6 +22,15 @@ public class GameManager : MonoBehaviour
     {
         if (instance) Destroy(instance);
         instance = this;
+    }
+
+    private void Start()
+    {
+        if (SaveDataManager.instance)
+        {
+            myLevelStats = SaveDataManager.instance.GetLevelData(myLevelIndex);
+        }
+        else Debug.LogWarning("Save data not loaded");
     }
 
     private void Update()
