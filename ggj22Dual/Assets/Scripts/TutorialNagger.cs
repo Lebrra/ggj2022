@@ -36,5 +36,6 @@ public class TutorialNagger : MonoBehaviour
     {
         yield return new WaitForSeconds(4F);
         imgAnim.gameObject.SetActive(true);
+        if (Input.GetMouseButton(0)) imgAnim.SetBool("clicked", true);
     }
 }
