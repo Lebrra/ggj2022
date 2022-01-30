@@ -11697,6 +11697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 7737833416001871083, guid: cccc0851eb111e245afc7de119b93b18, type: 3}
+      propertyPath: hasTouchedGround
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cccc0851eb111e245afc7de119b93b18, type: 3}
 --- !u!1 &1642473515
@@ -14543,6 +14547,10 @@ PrefabInstance:
     - target: {fileID: 985889356943168181, guid: 702071e2dccdbd04e918789bdf31ee16, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390875836062846359, guid: 702071e2dccdbd04e918789bdf31ee16, type: 3}
+      propertyPath: hasTouchedGround
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 702071e2dccdbd04e918789bdf31ee16, type: 3}

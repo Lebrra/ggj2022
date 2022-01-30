@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 89049fc8ade83554f8cd91579adf8029, type: 3}
   sfxList:
   - {fileID: 8300000, guid: e3ddd217adb2e7c46bea213af628ccfb, type: 3}
+  - {fileID: 8300000, guid: 22f3a3484a1153142918b0cfa5c09305, type: 3}
   songSource: {fileID: 392035179273419641}
   sfxSource: {fileID: 392035179273419643}
   currSong: 0
