@@ -15678,6 +15678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a0896633d67e2499e0641022268808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myLevelIndex: 1
   nextLevelIndex: 2
   pauseMenu: {fileID: 7139716279258568331}
 --- !u!224 &1211824233082346640
