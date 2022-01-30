@@ -164,4 +164,16 @@ public class GameManager : MonoBehaviour
 
         return minutesStr + (Mathf.Round(remaining * 100F) / 100F).ToString();
     }
+
+    public void ResetSaveData()
+    {
+        JSONEditor.DeleteSaveData();
+        Destroy(SaveDataManager.instance.gameObject);
+
+        Time.timeScale = 1;
+        Pause();
+
+        StartCoroutine(AudioManager.inst.FadeSongOut(2.2f, 0, 0));
+        SceneLoader.instance?.LoadScene(0);
+    }
 }

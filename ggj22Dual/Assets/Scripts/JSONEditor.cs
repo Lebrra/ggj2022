@@ -34,6 +34,17 @@ public static class JSONEditor
 
         return json;
     }
+
+    public static SaveData DeleteSaveData()
+    {
+        if (File.Exists(Application.persistentDataPath + "/gamedata.json"))
+        {
+            // get from file
+            File.Delete(Application.persistentDataPath + "/gamedata.json");
+        }
+        // form default data
+        return new SaveData();
+    }
 }
 
 [System.Serializable]
