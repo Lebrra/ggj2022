@@ -19953,7 +19953,7 @@ PrefabInstance:
     - target: {fileID: 2589282995440679204, guid: 1548a98b84e1a1b4482887a7b820a38c, type: 3}
       propertyPath: fogAnim
       value: 
-      objectReference: {fileID: 919978277}
+      objectReference: {fileID: 706564198}
     - target: {fileID: 7329748240488533260, guid: 1548a98b84e1a1b4482887a7b820a38c, type: 3}
       propertyPath: board
       value: 
