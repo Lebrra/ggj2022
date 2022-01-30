@@ -8,6 +8,8 @@ public class BallLogic : MonoBehaviour
     bool success = false;
     int titleOption = -1;
 
+    public bool hasTouchedGround = false;
+
     float yCheckVal = -10F;
 
     void Update()
@@ -54,5 +56,14 @@ public class BallLogic : MonoBehaviour
     public void SetChoice(int choice)
     {
         titleOption = choice;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!hasTouchedGround)
+        {
+            AudioManager.inst.PlayBallSound(1);
+            hasTouchedGround = true;
+        }
     }
 }

@@ -72,4 +72,11 @@ public class AudioManager : MonoBehaviour
         if (!sfxSource.isPlaying)
             sfxSource.Play();
     }
+
+    public void PlayBallSound(int sfxNumber)
+    {
+        sfxSource.clip = sfxList[sfxNumber];
+        if (!sfxSource.isPlaying)
+            sfxSource.Play();
+    }
 }
