@@ -8,9 +8,9 @@ public class SaveDataManager : MonoBehaviour
 
     public SaveData gameData;
 
-    [Header("Cursors")]
-    public Texture2D cursorDefault;
-    public Texture2D cursorClicked;
+    //[Header("Cursors")]
+    //public Texture2D cursorDefault;
+    //public Texture2D cursorClicked;
 
     private void Awake()
     {
@@ -53,10 +53,10 @@ public class SaveDataManager : MonoBehaviour
         JSONEditor.SaveDataToJSON(gameData);
     }
 
-    private void Update()
-    {
-        // cursor change
-        if (Input.GetMouseButtonDown(0)) Cursor.SetCursor(cursorClicked, Vector2.zero, CursorMode.Auto);
-        if (Input.GetMouseButtonUp(0)) Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
-    }
+    //private void Update()
+    //{
+    //    // cursor change
+    //    if (Input.GetMouseButtonDown(0)) Cursor.SetCursor(cursorClicked, Vector2.zero, CursorMode.ForceSoftware);
+    //    if (Input.GetMouseButtonUp(0)) Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.ForceSoftware);
+    //}
 }
